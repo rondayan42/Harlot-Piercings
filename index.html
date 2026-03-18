@@ -1,30 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Harlot Piercings — A premium solo piercing studio. Medieval armory aesthetics, anatomical precision. Adorn the Flesh. Defy the Tether.">
-  <title>Harlot Piercings — Adorn the Flesh</title>
+  <meta name="description" data-i18n-attr="content" data-i18n="meta.description"
+    content="Harlot Piercing — סטודיו פירסינג פרימיום. אסתטיקת שריון ימי-ביניימי, דיוק אנטומי. קשטי את הבשר. עקפי את השלשלאות.">
+  <title data-i18n="meta.title">Harlot Piercing — קשטי את הבשר</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
   <!-- ═══════════════════════════════════════════════
        NAVIGATION
        ═══════════════════════════════════════════════ -->
   <nav class="nav-bar" id="navbar">
-    <a href="#hero" class="nav-logo">Harlot</a>
+    <a href="#hero" class="nav-logo">Harlot Piercing</a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#services">The Armory</a></li>
-      <li><a href="#about">The Fleshmancer</a></li>
-      <li><a href="#aftercare">The Ritual</a></li>
-      <li><a href="#contact">The Ledger</a></li>
+      <li><a href="#services" data-i18n="nav.armory">הנשקייה</a></li>
+      <li><a href="#about" data-i18n="nav.fleshmancer">ממיר הבשר</a></li>
+      <li><a href="#aftercare" data-i18n="nav.ritual">הטקס</a></li>
+      <li><a href="#gallery" data-i18n="nav.gallery">הגלריה</a></li>
+      <li><a href="#contact" data-i18n="nav.ledger">הספר</a></li>
     </ul>
-    <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+    <div class="nav-right">
+      <button class="lang-toggle" id="langToggle" aria-label="Switch language">EN</button>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </nav>
 
   <!-- ═══════════════════════════════════════════════
@@ -33,40 +43,15 @@
   <section class="hero" id="hero">
     <div class="hero-bg" style="background-image: url('images/hero-bg.png');"></div>
     <div class="hero-content">
-      <h1>Harlot Piercings</h1>
-      <p class="hero-subtitle">Adorn the Flesh · Defy the Tether</p>
-      <a href="#contact" class="btn-cta">Book Your Confession</a>
+      <h1>Harlot Piercing</h1>
+      <p class="hero-subtitle" data-i18n="hero.subtitle">קשטי את הבשר · עקפי את השלשלאות</p>
+      <a href="#contact" class="btn-cta" data-i18n="hero.cta">הזמיני את וידויך</a>
     </div>
   </section>
 
   <!-- ⚔ Broadsword Divider ⚔ -->
   <div class="divider-sword">
-    <span class="divider-ornament">✧</span>
-    <svg viewBox="0 0 600 30" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="swordGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#a3b1c6;stop-opacity:0.3"/>
-          <stop offset="30%" style="stop-color:#B8963D;stop-opacity:1"/>
-          <stop offset="50%" style="stop-color:#e0e5ec;stop-opacity:1"/>
-          <stop offset="70%" style="stop-color:#B8963D;stop-opacity:1"/>
-          <stop offset="100%" style="stop-color:#a3b1c6;stop-opacity:0.3"/>
-        </linearGradient>
-      </defs>
-      <!-- Blade -->
-      <polygon points="80,15 520,12 530,15 520,18 80,15" fill="url(#swordGrad1)" stroke="#B8963D" stroke-width="0.5"/>
-      <!-- Hilt guard -->
-      <rect x="60" y="6" width="6" height="18" rx="1" fill="#B8963D"/>
-      <rect x="534" y="6" width="6" height="18" rx="1" fill="#B8963D"/>
-      <!-- Grip -->
-      <rect x="30" y="12" width="30" height="6" rx="2" fill="#1F0A2A" stroke="#B8963D" stroke-width="0.5"/>
-      <rect x="540" y="12" width="30" height="6" rx="2" fill="#1F0A2A" stroke="#B8963D" stroke-width="0.5"/>
-      <!-- Pommel -->
-      <circle cx="25" cy="15" r="5" fill="#B8963D" stroke="#1F0A2A" stroke-width="0.5"/>
-      <circle cx="575" cy="15" r="5" fill="#B8963D" stroke="#1F0A2A" stroke-width="0.5"/>
-      <!-- Center gem -->
-      <circle cx="300" cy="15" r="3" fill="#5A0A18" stroke="#B8963D" stroke-width="0.8"/>
-    </svg>
-    <span class="divider-ornament">✧</span>
+    <img src="images/broadsword-divider.png" alt="Decorative broadsword divider" class="divider-img">
   </div>
 
   <!-- ═══════════════════════════════════════════════
@@ -74,60 +59,38 @@
        ═══════════════════════════════════════════════ -->
   <section id="services">
     <div class="section-wrapper">
-      <h2 class="section-title reveal">The Armory</h2>
+      <h2 class="section-title reveal" data-i18n="armory.title">הנשקייה</h2>
 
       <div class="services-grid">
 
         <!-- Card 1: Visage -->
         <div class="grimoire-card reveal">
-          <h3>Visage</h3>
-          <span class="card-subtitle">Facial Architecture</span>
-          <p>Precise interventions upon the countenance. We sculpt with surgical steel and unwavering intent — from the defiant arch of the eyebrow to asymmetrical lip modifications that speak without words. Heavy septum hardware forged for those who wear their armor on their face.</p>
+          <h3 data-i18n="armory.card1.title">הפנים</h3>
+          <span class="card-subtitle" data-i18n="armory.card1.subtitle">ארכיטקטורת הפנים</span>
+          <p data-i18n="armory.card1.body">התערבויות מדויקות על פני הפנים. אנחנו מפסלים בפלדה כירורגית וכוונה אמיצה — מקשת הגבה האמיצה ועד לשינויי שפה אסימטריים שמדברים ללא מילים. חומרת ספטום כבדה שנוצרה עבור אלה שלובשים את שריונם על פניהם.</p>
         </div>
 
         <!-- Card 2: The Aural Curations -->
         <div class="grimoire-card reveal">
-          <h3>The Aural Curations</h3>
-          <span class="card-subtitle">Ear Projects & Scaffolding</span>
-          <p>Intricate constellations mapped across the cartilage. Chainmail drapes cascading from industrial scaffolding, orbital routes charted through helix and conch. Each project is an architectural endeavor — a cathedral built upon the auricle.</p>
+          <h3 data-i18n="armory.card2.title">אוצרות האוזן</h3>
+          <span class="card-subtitle" data-i18n="armory.card2.subtitle">פרויקטי אוזן ופיגומים</span>
+          <p data-i18n="armory.card2.body">קונסטלציות מורכבות שנמפות על פני הסחוס. שרשראות שיריון המתפשטות מפיגומים תעשייתיים, נתיבי מסלול המתוכננים דרך ה-helix וה-conch. כל פרויקט הוא מפעל ארכיטקטוני — קתדרלה שנבנית על האפרכסת.</p>
         </div>
 
         <!-- Card 3: Flesh Bound -->
         <div class="grimoire-card reveal">
-          <h3>Flesh Bound</h3>
-          <span class="card-subtitle">Surface & Dermal Work</span>
-          <p>Surface anchors embedded like relics beneath the skin. Dermal implants that catch the light like embedded gemstones. The art of antigravity modifications — jewelry that defies the pull of the mundane, suspended in flesh as if by sorcery.</p>
+          <h3 data-i18n="armory.card3.title">קשור לבשר</h3>
+          <span class="card-subtitle" data-i18n="armory.card3.subtitle">תשתיות עור ועוגנים עוריים</span>
+          <p data-i18n="armory.card3.body">עוגנים שמוטבעים כמו שרידים מתחת לעור. שתלים עוריים שתופסים את האור כמו אבני חן משובצות. אמנות השינויים נגד הכבידה — תכשיטים שמתנגדים למשיכת הבנאלי, תלויים בבשר כאילו בכישוף.</p>
         </div>
       </div>
 
-      <!-- Marginalia cat -->
-      <div class="marginalia-cat cat-right" aria-hidden="true">🐈‍⬛</div>
     </div>
   </section>
 
   <!-- ⚔ Broadsword Divider ⚔ -->
   <div class="divider-sword">
-    <span class="divider-ornament">✧</span>
-    <svg viewBox="0 0 600 30" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="swordGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#a3b1c6;stop-opacity:0.3"/>
-          <stop offset="30%" style="stop-color:#B8963D;stop-opacity:1"/>
-          <stop offset="50%" style="stop-color:#e0e5ec;stop-opacity:1"/>
-          <stop offset="70%" style="stop-color:#B8963D;stop-opacity:1"/>
-          <stop offset="100%" style="stop-color:#a3b1c6;stop-opacity:0.3"/>
-        </linearGradient>
-      </defs>
-      <polygon points="80,15 520,12 530,15 520,18 80,15" fill="url(#swordGrad2)" stroke="#B8963D" stroke-width="0.5"/>
-      <rect x="60" y="6" width="6" height="18" rx="1" fill="#B8963D"/>
-      <rect x="534" y="6" width="6" height="18" rx="1" fill="#B8963D"/>
-      <rect x="30" y="12" width="30" height="6" rx="2" fill="#1F0A2A" stroke="#B8963D" stroke-width="0.5"/>
-      <rect x="540" y="12" width="30" height="6" rx="2" fill="#1F0A2A" stroke="#B8963D" stroke-width="0.5"/>
-      <circle cx="25" cy="15" r="5" fill="#B8963D" stroke="#1F0A2A" stroke-width="0.5"/>
-      <circle cx="575" cy="15" r="5" fill="#B8963D" stroke="#1F0A2A" stroke-width="0.5"/>
-      <circle cx="300" cy="15" r="3" fill="#5A0A18" stroke="#B8963D" stroke-width="0.8"/>
-    </svg>
-    <span class="divider-ornament">✧</span>
+    <img src="images/broadsword-divider.png" alt="Decorative broadsword divider" class="divider-img">
   </div>
 
   <!-- ═══════════════════════════════════════════════
@@ -138,17 +101,19 @@
       <div class="about-layout reveal">
 
         <div class="about-image-frame">
-          <img src="images/about-portrait.png" alt="The Fleshmancer's workspace — mortar, pestle, grimoire, and medieval cat">
+          <img src="images/about-portrait.png"
+            alt="The Fleshmancer's workspace — mortar, pestle, grimoire, and medieval cat">
           <!-- Marginalia cat -->
-          <div class="marginalia-cat cat-left" aria-hidden="true" style="bottom: -10px; left: -20px; font-size: 2.5rem;">🐈‍⬛</div>
+          <div class="marginalia-cat cat-left" aria-hidden="true"
+            style="bottom: -10px; left: -20px; font-size: 2.5rem;"><i class="fa-solid fa-cat"></i></div>
         </div>
 
         <div class="about-text">
-          <h2>The Fleshmancer</h2>
-          <p>This is not a clinic. There are no fluorescent lights, no sterile waiting rooms with year-old magazines. This is a solitary practice — one practitioner, one craft, refined through years of anatomical devotion and alchemical intuition.</p>
-          <p>Every piercing is a negotiation between steel and flesh, between intention and anatomy. I do not perform procedures; I conduct rituals. Each modification is approached with the reverence of a medieval artisan — measured, deliberate, and permanent.</p>
-          <p>The body is both canvas and cathedral. I am merely the architect who places the keystones.</p>
-          <span class="signature">— The Harlot</span>
+          <h2 data-i18n="about.title">ממיר הבשר</h2>
+          <p data-i18n="about.p1">זה לא מרפאה. אין כאן אורות ניאון, אין חדרי המתנה עקרים עם מגזינים ישנים. זו פרקטיקה בודדת — מטפלת אחת, מלאכה אחת, מזוקקת דרך שנות מסירות אנטומית ואינטואיציה אלכימאית.</p>
+          <p data-i18n="about.p2">כל פירסינג הוא משא ומתן בין פלדה לבשר, בין כוונה לאנטומיה. אני לא מבצעת פרוצדורות; אני מנהלת טקסים. כל שינוי מתקרב אליו ביראת הכבוד של אומן ימי-ביניימי — מדוד, מכוון, ותמידי.</p>
+          <p data-i18n="about.p3">הגוף הוא גם קנבס וגם קתדרלה. אני רק האדריכלית שמניחה את אבני הזווית.</p>
+          <span class="signature" data-i18n="about.signature">— ה-Harlot</span>
         </div>
 
       </div>
@@ -157,27 +122,7 @@
 
   <!-- ⚔ Broadsword Divider ⚔ -->
   <div class="divider-sword">
-    <span class="divider-ornament">✧</span>
-    <svg viewBox="0 0 600 30" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="swordGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#a3b1c6;stop-opacity:0.3"/>
-          <stop offset="30%" style="stop-color:#B8963D;stop-opacity:1"/>
-          <stop offset="50%" style="stop-color:#e0e5ec;stop-opacity:1"/>
-          <stop offset="70%" style="stop-color:#B8963D;stop-opacity:1"/>
-          <stop offset="100%" style="stop-color:#a3b1c6;stop-opacity:0.3"/>
-        </linearGradient>
-      </defs>
-      <polygon points="80,15 520,12 530,15 520,18 80,15" fill="url(#swordGrad3)" stroke="#B8963D" stroke-width="0.5"/>
-      <rect x="60" y="6" width="6" height="18" rx="1" fill="#B8963D"/>
-      <rect x="534" y="6" width="6" height="18" rx="1" fill="#B8963D"/>
-      <rect x="30" y="12" width="30" height="6" rx="2" fill="#1F0A2A" stroke="#B8963D" stroke-width="0.5"/>
-      <rect x="540" y="12" width="30" height="6" rx="2" fill="#1F0A2A" stroke="#B8963D" stroke-width="0.5"/>
-      <circle cx="25" cy="15" r="5" fill="#B8963D" stroke="#1F0A2A" stroke-width="0.5"/>
-      <circle cx="575" cy="15" r="5" fill="#B8963D" stroke="#1F0A2A" stroke-width="0.5"/>
-      <circle cx="300" cy="15" r="3" fill="#5A0A18" stroke="#B8963D" stroke-width="0.8"/>
-    </svg>
-    <span class="divider-ornament">✧</span>
+    <img src="images/broadsword-divider.png" alt="Decorative broadsword divider" class="divider-img">
   </div>
 
   <!-- ═══════════════════════════════════════════════
@@ -186,16 +131,16 @@
   <section id="aftercare">
     <div class="section-wrapper">
       <div class="ritual-container reveal">
-        <h2>The Ritual</h2>
-        <p class="ritual-subtitle">The Sacred Ordinances of Healing</p>
+        <h2 data-i18n="ritual.title">הטקס</h2>
+        <p class="ritual-subtitle" data-i18n="ritual.subtitle">הצווים המקודשים של הריפוי</p>
 
         <ul class="ritual-list">
-          <li><strong>The First Fortnight:</strong> The wound is fresh, an open gate. Cleanse it twice daily with sterile saline — no alchemical compounds, no herbal tinctures. Pure salt and pure water.</li>
-          <li><strong>Guard the Relic:</strong> The jewelry is sacred. Do not rotate, twist, or fidget with it. Your hands are profane until proven otherwise — touch only with freshly washed fingers.</li>
-          <li><strong>Shun the Waters:</strong> Avoid submersion in lakes, pools, and baths for a minimum of four weeks. Standing water is a medieval plague unto fresh piercings.</li>
-          <li><strong>The Body Will Rebel:</strong> Swelling, warmth, and clear discharge are the body's natural siege response. This is expected. Pus, fever, and expanding redness are not — seek counsel immediately.</li>
-          <li><strong>Sleep as a Knight Sleeps:</strong> On your back, away from the wound. A travel pillow becomes your shield against nocturnal irritation.</li>
-          <li><strong>Patience is the Final Trial:</strong> Full healing takes months, sometimes a year. Do not downsize, change, or remove jewelry before clearing it with your practitioner. The flesh remembers impatience.</li>
+          <li><strong data-i18n="ritual.item1.title">השבועיים הראשונים:</strong> <span data-i18n="ritual.item1.body">הפצע טרי, שער פתוח. נקי אותו פעמיים ביום עם מי מלח סטריליים — ללא תרכובות אלכימאיות, ללא תמציות צמחים. מלח טהור ומים טהורים.</span></li>
+          <li><strong data-i18n="ritual.item2.title">שמור על האוצר:</strong> <span data-i18n="ritual.item2.body">התכשיט קדוש. אל תסובב, תעקם, או תתעסק איתו. ידיך חולייניות עד שיוכח אחרת — גע רק עם אצבעות שנשטפו היטב.</span></li>
+          <li><strong data-i18n="ritual.item3.title">הימנע ממים:</strong> <span data-i18n="ritual.item3.body">הימנע מהשקעה באגמים, בריכות ואמבטיות למינימום של ארבעה שבועות. מים עומדים הם מגפת ימי ביניים על פירסינג טרי.</span></li>
+          <li><strong data-i18n="ritual.item4.title">הגוף יתמרד:</strong> <span data-i18n="ritual.item4.body">נפיחות, חום ופריקה שקופה הם התגובה הטבעית של הגוף למצור. זה צפוי. מוגלה, חום גב וסומק מתפשט אינם — פנה לייעוץ מיד.</span></li>
+          <li><strong data-i18n="ritual.item5.title">ישן כמו אביר:</strong> <span data-i18n="ritual.item5.body">על גביך, הרחק מהפצע. כרית נסיעות הופכת למגנך מפני גירוי לילי.</span></li>
+          <li><strong data-i18n="ritual.item6.title">הסבלנות היא הניסיון האחרון:</strong> <span data-i18n="ritual.item6.body">ריפוי מלא אורך חודשים, לפעמים שנה. אל תקטין, תחליף, או תסיר תכשיטים לפני שתאשר זאת עם המטפל שלך. הבשר זוכר חוסר סבלנות.</span></li>
         </ul>
       </div>
     </div>
@@ -203,80 +148,115 @@
 
   <!-- ⚔ Broadsword Divider ⚔ -->
   <div class="divider-sword">
-    <span class="divider-ornament">✧</span>
-    <svg viewBox="0 0 600 30" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="swordGrad4" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#a3b1c6;stop-opacity:0.3"/>
-          <stop offset="30%" style="stop-color:#B8963D;stop-opacity:1"/>
-          <stop offset="50%" style="stop-color:#e0e5ec;stop-opacity:1"/>
-          <stop offset="70%" style="stop-color:#B8963D;stop-opacity:1"/>
-          <stop offset="100%" style="stop-color:#a3b1c6;stop-opacity:0.3"/>
-        </linearGradient>
-      </defs>
-      <polygon points="80,15 520,12 530,15 520,18 80,15" fill="url(#swordGrad4)" stroke="#B8963D" stroke-width="0.5"/>
-      <rect x="60" y="6" width="6" height="18" rx="1" fill="#B8963D"/>
-      <rect x="534" y="6" width="6" height="18" rx="1" fill="#B8963D"/>
-      <rect x="30" y="12" width="30" height="6" rx="2" fill="#1F0A2A" stroke="#B8963D" stroke-width="0.5"/>
-      <rect x="540" y="12" width="30" height="6" rx="2" fill="#1F0A2A" stroke="#B8963D" stroke-width="0.5"/>
-      <circle cx="25" cy="15" r="5" fill="#B8963D" stroke="#1F0A2A" stroke-width="0.5"/>
-      <circle cx="575" cy="15" r="5" fill="#B8963D" stroke="#1F0A2A" stroke-width="0.5"/>
-      <circle cx="300" cy="15" r="3" fill="#5A0A18" stroke="#B8963D" stroke-width="0.8"/>
-    </svg>
-    <span class="divider-ornament">✧</span>
+    <img src="images/broadsword-divider.png" alt="Decorative broadsword divider" class="divider-img">
   </div>
 
   <!-- ═══════════════════════════════════════════════
-       SECTION 5: THE LEDGER (Footer / Contact)
+       SECTION 5: THE GALLERY
+       ═══════════════════════════════════════════════ -->
+  <section id="gallery">
+    <div class="section-wrapper">
+      <h2 class="section-title reveal" data-i18n="gallery.title">הגלריה</h2>
+      <p class="gallery-subtitle reveal" data-i18n="gallery.subtitle">עדות לעבודה. כל תמונה — טקס שהושלם.</p>
+
+      <div class="gallery-grid reveal">
+        <div class="gallery-item">
+          <img src="images/gallery-ear.png" alt="Ear constellation piercing project" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-label" data-i18n="gallery.ear">קונסטלציית אוזן</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery-septum.png" alt="Ornate septum piercing" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-label" data-i18n="gallery.septum">ספטום</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery-industrial.png" alt="Industrial bar piercing" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-label" data-i18n="gallery.industrial">אינדסטריאל</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery-nostril.png" alt="Nostril piercing" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-label" data-i18n="gallery.nostril">נחיר</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery-anchor.png" alt="Dermal surface anchor" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-label" data-i18n="gallery.anchor">עוגן עורי</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/gallery-lip.png" alt="Labret lip piercing" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-label" data-i18n="gallery.lip">לברט</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⚔ Broadsword Divider ⚔ -->
+  <div class="divider-sword">
+    <img src="images/broadsword-divider.png" alt="Decorative broadsword divider" class="divider-img">
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 6: THE LEDGER (Footer / Contact)
        ═══════════════════════════════════════════════ -->
   <footer class="footer" id="contact">
     <div class="footer-content">
 
       <!-- Booking Form -->
       <div class="booking-section">
-        <h2>The Ledger</h2>
+        <h2 data-i18n="ledger.title">הספר</h2>
         <form class="booking-form" id="bookingForm">
           <div class="form-group">
-            <label for="clientName">Your Name</label>
-            <input type="text" id="clientName" name="clientName" placeholder="State your identity" required>
+            <label for="clientName" data-i18n="ledger.name">שמך</label>
+            <input type="text" id="clientName" name="clientName" data-i18n-attr="placeholder"
+              data-i18n="ledger.namePlaceholder" placeholder="הצהירי את זהותך" required>
           </div>
           <div class="form-group">
-            <label for="modification">Modification Desired</label>
-            <textarea id="modification" name="modification" placeholder="Describe the ritual you seek" required></textarea>
+            <label for="modification" data-i18n="ledger.mod">השינוי הרצוי</label>
+            <textarea id="modification" name="modification" data-i18n-attr="placeholder"
+              data-i18n="ledger.modPlaceholder" placeholder="תארי את הטקס שאת מבקשת"
+              required></textarea>
           </div>
           <div class="form-group">
-            <label for="confessionDate">Date of Confession</label>
+            <label for="confessionDate" data-i18n="ledger.date">תאריך הווידוי</label>
             <input type="date" id="confessionDate" name="confessionDate" required>
           </div>
-          <button type="submit" class="btn-submit">Submit Your Petition</button>
+          <button type="submit" class="btn-submit" data-i18n="ledger.submit">שלחי את בקשתך</button>
         </form>
         <div class="form-success" id="formSuccess">
-          ⛧ Your petition has been received. Await your summons. ⛧
+          <i class="fa-solid fa-skull"></i> <span data-i18n="ledger.success">בקשתך התקבלה. המתיני לזימונך.</span> <i class="fa-solid fa-skull"></i>
         </div>
       </div>
 
       <!-- Studio Info -->
       <div class="studio-info">
-        <h3>Studio Coordinates</h3>
+        <h3 data-i18n="ledger.coords">קואורדינטות הסטודיו</h3>
         <p>
-          <span class="info-label">Location</span>
-          The Obsidian Tower, 13 Ironmonger Lane<br>
-          Old Quarter, The City
+          <span class="info-label" data-i18n="ledger.location">מיקום</span>
+          <span data-i18n="ledger.address">המגדל השחור, 13 רחוב הברזל<br>הרובע הישן, העיר</span>
         </p>
         <p>
-          <span class="info-label">Hours of Operation</span>
-          Tuesday – Saturday · 11:00 – 19:00<br>
-          By Appointment Only
+          <span class="info-label" data-i18n="ledger.hours">שעות פעילות</span>
+          <span data-i18n="ledger.hoursVal">שלישי – שבת · 11:00 – 19:00<br>בתיאום מראש בלבד</span>
         </p>
         <p>
-          <span class="info-label">Summon</span>
+          <span class="info-label" data-i18n="ledger.summon">זמינות</span>
           enquiries@harlotpiercings.com
         </p>
 
         <div class="social-links">
           <a href="#" aria-label="Instagram">Instagram</a>
           <a href="#" aria-label="TikTok">TikTok</a>
-          <a href="#" aria-label="Portfolio">Portfolio</a>
+          <a href="#" aria-label="Portfolio" data-i18n="ledger.portfolio">תיק עבודות</a>
         </div>
       </div>
 
@@ -284,11 +264,14 @@
 
     <!-- Morningstar border -->
     <div class="footer-morningstar">
-      <span class="morningstar-icons">⚝ ⚝ ⚝</span>
-      © MMXXVI Harlot Piercings · All Rites Reserved
+      <span class="morningstar-icons"><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i
+          class="fa-solid fa-star"></i></span>
+      <span data-i18n="ledger.copyright">© MMXXVI Harlot Piercing · כל הזכויות שמורות</span>
     </div>
   </footer>
 
+  <script src="translations.js"></script>
   <script src="script.js"></script>
 </body>
+
 </html>
