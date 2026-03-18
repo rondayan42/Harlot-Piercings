@@ -216,19 +216,12 @@ a:hover {
   position: absolute;
   inset: 0;
   z-index: 0;
-  /* Layered atmospheric background: dark steel gradients + chainmail texture */
-  background:
-    /* Candlelight pools */
-    radial-gradient(ellipse at 20% 70%, rgba(184, 150, 61, 0.06) 0%, transparent 40%),
-    radial-gradient(ellipse at 75% 30%, rgba(184, 150, 61, 0.05) 0%, transparent 35%),
-    radial-gradient(ellipse at 50% 90%, rgba(90, 10, 24, 0.08) 0%, transparent 30%),
-    /* Metallic sheen streaks */
-    linear-gradient(160deg, rgba(180,190,210,0.04) 0%, transparent 30%),
-    linear-gradient(200deg, transparent 60%, rgba(180,190,210,0.03) 100%),
-    /* Base dark foundation */
-    linear-gradient(135deg, #08080d 0%, #0e0e18 30%, #12101e 50%, #0a0a12 70%, #060610 100%);
-  /* Chainmail overlay on hero */
+  /* Image comes from inline style; these are fallback/sizing */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   background-color: #0a0a0f;
+  filter: brightness(0.35) contrast(1.15) saturate(0.8);
 }
 
 .hero-bg::before {
