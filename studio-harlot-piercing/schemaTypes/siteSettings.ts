@@ -1,25 +1,37 @@
 import {defineField, defineType} from 'sanity'
-import {EarthGlobeIcon} from '@sanity/icons'
+import {EyeIcon} from '../customIcons'
 
 export default defineType({
   name: 'siteSettings',
   title: 'Global Site Settings',
   type: 'document',
-  icon: EarthGlobeIcon,
+  icon: EyeIcon,
   groups: [
-    {name: 'seo', title: 'SEO & Meta'},
-    {name: 'hero', title: 'Hero Section'},
-    {name: 'about', title: 'About Section'},
-    {name: 'footer', title: 'Footer Section'},
+    {name: 'theme', title: '🎨 Theme & Branding'},
+    {name: 'seo', title: '🔍 SEO & Meta'},
+    {name: 'hero', title: '🏰 Hero Section'},
+    {name: 'about', title: '📜 About Section'},
+    {name: 'footer', title: '🦶 Footer Section'},
   ],
   fields: [
+    // THEME & BRANDING
+    defineField({
+      name: 'brandColor',
+      title: 'Brand Highlight Color',
+      type: 'color',
+      group: 'theme',
+      description: 'Visual color picker to set the primary highlight color of the website.',
+      options: {
+        disableAlpha: true,
+      }
+    }),
     // META / SEO
     defineField({
       name: 'metaTitle',
-      title: 'Site Meta Title',
+      title: 'Website Title (Browser Tab)',
       type: 'bilingualString',
       group: 'seo',
-      description: 'The title that appears in browser tabs and search engine results.',
+      description: 'The title that appears in browser tabs and Google search results. Keep it under 60 characters for best results.',
       validation: (Rule) => Rule.custom((value: any) => {
         if (value && (value.en?.length > 60 || value.he?.length > 60)) {
           return 'SEO titles above 60 characters usually get truncated in Google search results.'
@@ -29,10 +41,10 @@ export default defineType({
     }),
     defineField({
       name: 'metaDesc',
-      title: 'Site Meta Description',
+      title: 'Website Description (Google Preview)',
       type: 'bilingualText',
       group: 'seo',
-      description: 'The short description that appears in search engine results.',
+      description: 'The short blurb shown under your website title in Google search results. Keep it under 160 characters.',
       validation: (Rule) => Rule.custom((value: any) => {
         if (value && (value.en?.length > 160 || value.he?.length > 160)) {
           return 'SEO descriptions above 160 characters usually get truncated in Google search results.'
@@ -46,43 +58,43 @@ export default defineType({
       title: 'Hero Subtitle',
       type: 'bilingualString',
       group: 'hero',
-      description: 'The text located right under the main "Harlot Piercing" logo.',
+      description: 'The text shown right under the main "Harlot Piercing" logo at the top of your website.',
     }),
     defineField({
       name: 'heroCta',
-      title: 'Hero CTA Button',
+      title: 'Hero Button Text',
       type: 'bilingualString',
       group: 'hero',
-      description: 'The text for the main "Book Appointment" button.',
+      description: 'The text on the main call-to-action button (e.g., "Book Appointment").',
     }),
     // ABOUT
     defineField({
       name: 'aboutP1',
-      title: 'About - Paragraph 1',
+      title: 'About — First Paragraph',
       type: 'bilingualText',
       group: 'about',
-      description: 'The first paragraph of the About section.',
+      description: 'The opening paragraph of the About section. Introduce yourself and your studio.',
     }),
     defineField({
       name: 'aboutP2',
-      title: 'About - Paragraph 2',
+      title: 'About — Second Paragraph',
       type: 'bilingualText',
       group: 'about',
-      description: 'The second paragraph of the About section.',
+      description: 'The second paragraph. Share your philosophy, specialization, or experience.',
     }),
     defineField({
       name: 'aboutP3',
-      title: 'About - Paragraph 3',
+      title: 'About — Third Paragraph',
       type: 'bilingualText',
       group: 'about',
-      description: 'The third paragraph of the About section.',
+      description: 'The closing paragraph. Invite clients to visit or make an appointment.',
     }),
     defineField({
       name: 'aboutSignature',
-      title: 'About - Signature',
+      title: 'About — Sign-Off Name',
       type: 'bilingualString',
       group: 'about',
-      description: 'The sign-off text at the end of the About section.',
+      description: 'Your name or sign-off at the bottom of the About section (e.g., "— Harlot").',
     }),
     // FOOTER (The Ledger)
     defineField({
@@ -90,26 +102,26 @@ export default defineType({
       title: 'Studio Address',
       type: 'bilingualText',
       group: 'footer',
-      description: 'The physical coordinates / address of the studio.',
+      description: 'Your studio\'s physical address as shown in the website footer.',
     }),
     defineField({
       name: 'footerHours',
-      title: 'Hours of Operation',
+      title: 'Opening Hours',
       type: 'bilingualText',
       group: 'footer',
-      description: 'The operating hours shown in the footer.',
+      description: 'Your studio\'s operating hours (e.g., "Sun–Thu: 10:00–20:00").',
     }),
     defineField({
       name: 'footerCopyright',
       title: 'Copyright Text',
       type: 'bilingualString',
       group: 'footer',
-      description: 'The copyright text at the very bottom of the page.',
+      description: 'The copyright notice at the very bottom of the page (e.g., "© 2026 Harlot Piercings").',
     }),
   ],
   preview: {
     prepare() {
-      return {title: 'Global Site Settings (Edit Me)'}
+      return {title: '⚙️ Global Site Settings'}
     },
   },
 })

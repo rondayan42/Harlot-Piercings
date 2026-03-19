@@ -11,7 +11,7 @@ export const sanityClient = isSanityConfigured
   ? createClient({
       projectId,
       dataset,
-      useCdn: true,
+      useCdn: false, // Set to false to see immediate updates
       apiVersion: '2024-01-01',
       stega: {
         enabled: true,

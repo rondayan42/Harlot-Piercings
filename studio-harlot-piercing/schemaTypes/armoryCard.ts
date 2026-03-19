@@ -1,34 +1,38 @@
 import {defineField, defineType} from 'sanity'
-import {MenuIcon} from '@sanity/icons'
+import {SwordIcon} from '../customIcons'
 
 export default defineType({
   name: 'armoryCard',
   title: 'Service Card (The Armory)',
   type: 'document',
-  icon: MenuIcon,
+  icon: SwordIcon,
   fields: [
     defineField({
       name: 'title',
-      title: 'Title',
+      title: 'Service Name',
       type: 'bilingualString',
+      description: 'The name of this piercing service (e.g., "Ear Lobe Piercing"). This appears as the card heading on the website.',
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'subtitle',
-      title: 'Subtitle',
+      title: 'Short Tagline',
       type: 'bilingualString',
+      description: 'A short catchy subtitle shown just below the service name (e.g., "Classic & Timeless").',
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'body',
-      title: 'Description',
+      title: 'Full Description',
       type: 'bilingualText',
+      description: 'The detailed description of this service. This is shown when a visitor clicks on the card.',
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'order',
       title: 'Display Order',
       type: 'number',
+      description: 'Controls the order of the cards on the website. Lower numbers appear first. Leave at 0 if unsure.',
       initialValue: 0,
     }),
   ],
@@ -48,8 +52,8 @@ export default defineType({
       const {title, subtitle} = selection
       return {
         title: title ? title : '⚠️ English Missing',
-        subtitle: subtitle ? subtitle : '⚠️ Hebrew Missing'
+        subtitle: subtitle ? `🇮🇱 ${subtitle}` : '⚠️ Hebrew Missing',
       }
-    }
+    },
   },
 })

@@ -42,6 +42,11 @@ if (sanityClient) {
       if (siteSettings.footerAddress) { sanHe['ledger.address'] = siteSettings.footerAddress.he; sanEn['ledger.address'] = siteSettings.footerAddress.en; }
       if (siteSettings.footerHours) { sanHe['ledger.hoursVal'] = siteSettings.footerHours.he; sanEn['ledger.hoursVal'] = siteSettings.footerHours.en; }
       if (siteSettings.footerCopyright) { sanHe['ledger.copyright'] = siteSettings.footerCopyright.he; sanEn['ledger.copyright'] = siteSettings.footerCopyright.en; }
+      
+      if (siteSettings.brandColor?.hex) {
+        sanHe['theme.brandColor'] = siteSettings.brandColor.hex;
+        sanEn['theme.brandColor'] = siteSettings.brandColor.hex;
+      }
     }
 
     if (armoryCards?.length) {
@@ -83,6 +88,13 @@ const sanityTranslations = { he: sanHe, en: sanEn };
 <script is:inline define:vars={{ sanityTranslations }}>
   window.SANITY_TRANSLATIONS = sanityTranslations;
 </script>
+{siteSettings?.brandColor?.hex && (
+  <style is:inline set:html={`
+    :root {
+      --accent-gold: ${siteSettings.brandColor.hex} !important;
+    }
+  `} />
+)}
 <BaseLayout>
   <Nav />
   <Hero />

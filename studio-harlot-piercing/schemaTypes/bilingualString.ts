@@ -10,14 +10,16 @@ export default defineType({
   fields: [
     defineField({
       name: 'he',
-      title: 'Hebrew',
+      title: '🇮🇱 Hebrew',
       type: 'string',
+      placeholder: 'הקלד כאן בעברית...',
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'en',
-      title: 'English',
+      title: '🇬🇧 English',
       type: 'string',
+      placeholder: 'Type here in English...',
       validation: (rule) => rule.required(),
     }),
   ],

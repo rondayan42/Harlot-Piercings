@@ -1,61 +1,66 @@
 /**
  * Gallery Image Schema for Sanity CMS
- * 
+ *
  * This document type allows the piercer to upload and manage gallery images
  * with bilingual captions (Hebrew + English) and accessibility text.
  */
-import {ImagesIcon} from '@sanity/icons'
+import {ReliquaryIcon} from '../customIcons'
 
 export default {
   name: 'galleryImage',
   title: 'Gallery Image',
   type: 'document',
-  icon: ImagesIcon,
-  fieldsets: [
-    {
-      name: 'captions',
-      title: 'Captions',
-      options: { columns: 2 }
-    }
+  icon: ReliquaryIcon,
+  groups: [
+    {name: 'media', title: '📷 Image', default: true},
+    {name: 'captions', title: '✏️ Captions'},
+    {name: 'settings', title: '⚙️ Settings'},
   ],
   fields: [
     {
       name: 'image',
-      title: 'Image',
+      title: 'Upload Photo',
       type: 'image',
+      group: 'media',
+      description: 'Upload a photo of your piercing work. Drag & drop or click to choose an image from your computer.',
       options: {
-        hotspot: true, // Enable image cropping/hotspot
+        hotspot: true,
       },
       validation: (Rule) => Rule.required(),
     },
     {
       name: 'titleHe',
-      title: 'Hebrew Caption',
+      title: '🇮🇱 Hebrew Caption',
       type: 'string',
-      fieldset: 'captions',
-      description: 'כיתוב בעברית (e.g., קונסטלציית אוזן)',
+      group: 'captions',
+      description: 'כיתוב בעברית — A short description of the piercing in Hebrew.',
+      placeholder: 'e.g., קונסטלציית אוזן',
       validation: (Rule) => Rule.required(),
     },
     {
       name: 'titleEn',
-      title: 'English Caption',
+      title: '🇬🇧 English Caption',
       type: 'string',
-      fieldset: 'captions',
-      description: 'Caption in English (e.g., Ear Constellation)',
+      group: 'captions',
+      description: 'A short description of the piercing in English.',
+      placeholder: 'e.g., Ear Constellation',
       validation: (Rule) => Rule.required(),
     },
     {
       name: 'altText',
-      title: 'Alt Text (Accessibility)',
+      title: 'Image Description (for Accessibility)',
       type: 'string',
-      description: 'Descriptive text for screen readers',
+      group: 'settings',
+      description: 'Describe the image for people who use screen readers (e.g., "Close-up of a gold helix piercing on the left ear").',
+      placeholder: 'e.g., Close-up of a gold helix piercing on the left ear',
       validation: (Rule) => Rule.required(),
     },
     {
       name: 'order',
       title: 'Display Order',
       type: 'number',
-      description: 'Lower numbers appear first in the gallery grid',
+      group: 'settings',
+      description: 'Controls position in the gallery grid. Lower numbers appear first. Leave at 0 if unsure.',
       initialValue: 0,
     },
   ],
@@ -63,7 +68,7 @@ export default {
     {
       title: 'Display Order',
       name: 'orderAsc',
-      by: [{ field: 'order', direction: 'asc' }],
+      by: [{field: 'order', direction: 'asc'}],
     },
   ],
   preview: {
@@ -76,9 +81,9 @@ export default {
       const {title, subtitle, media} = selection
       return {
         title: title ? title : '⚠️ English Missing',
-        subtitle: subtitle ? subtitle : '⚠️ Hebrew Missing',
+        subtitle: subtitle ? `🇮🇱 ${subtitle}` : '⚠️ Hebrew Missing',
         media: media,
       }
-    }
+    },
   },
-};
+}
