@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (lightbox) {
     // Open lightbox
     galleryItems.forEach(item => {
-      item.addEventListener('click', () => {
+      const openItem = () => {
         const img = item.querySelector('img');
         const label = item.querySelector('.gallery-label');
         
@@ -131,6 +131,11 @@ document.addEventListener('DOMContentLoaded', () => {
           lightbox.classList.add('active');
           document.body.style.overflow = 'hidden'; // Prevent background scrolling
         }
+      };
+      
+      item.addEventListener('click', openItem);
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') openItem();
       });
     });
 
