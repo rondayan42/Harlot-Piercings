@@ -1193,7 +1193,7 @@ body.lang-en .faq-question { text-align: left; }
   }
 
   .divider-img {
-    width: 80vw;
+    width: min(280px, 60vw);
   }
 
   .grimoire-card, .about-text {
