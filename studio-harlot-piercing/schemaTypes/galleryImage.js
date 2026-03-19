@@ -5,18 +5,21 @@
  * with bilingual captions (Hebrew + English) and accessibility text.
  */
 import {ReliquaryIcon} from '../customIcons'
+import {orderRankField, orderRankOrdering} from '@sanity/orderable-document-list'
 
 export default {
   name: 'galleryImage',
   title: 'Gallery Image',
   type: 'document',
   icon: ReliquaryIcon,
+  orderings: [orderRankOrdering],
   groups: [
     {name: 'media', title: '📷 Image', default: true},
     {name: 'captions', title: '✏️ Captions'},
     {name: 'settings', title: '⚙️ Settings'},
   ],
   fields: [
+    orderRankField({ type: 'galleryImage' }),
     {
       name: 'image',
       title: 'Upload Photo',

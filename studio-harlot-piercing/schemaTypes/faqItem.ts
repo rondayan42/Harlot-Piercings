@@ -1,12 +1,15 @@
 import {defineField, defineType} from 'sanity'
 import {KeyIcon} from '../customIcons'
+import {orderRankField, orderRankOrdering} from '@sanity/orderable-document-list'
 
 export default defineType({
   name: 'faqItem',
   title: 'FAQ (The Inquisition)',
   type: 'document',
   icon: KeyIcon,
+  orderings: [orderRankOrdering],
   fields: [
+    orderRankField({ type: 'faqItem' }),
     defineField({
       name: 'question',
       title: 'Question',
@@ -21,20 +24,6 @@ export default defineType({
       description: 'Your answer to the question above. Write this as if you are speaking directly to a client.',
       validation: (rule) => rule.required(),
     }),
-    defineField({
-      name: 'order',
-      title: 'Display Order',
-      type: 'number',
-      description: 'Controls the order of FAQs on the website. Lower numbers appear first. Leave at 0 if unsure.',
-      initialValue: 0,
-    }),
-  ],
-  orderings: [
-    {
-      title: 'Display Order',
-      name: 'orderAsc',
-      by: [{field: 'order', direction: 'asc'}],
-    },
   ],
   preview: {
     select: {

@@ -1,12 +1,15 @@
 import {defineField, defineType} from 'sanity'
 import {SwordIcon} from '../customIcons'
+import {orderRankField, orderRankOrdering} from '@sanity/orderable-document-list'
 
 export default defineType({
   name: 'armoryCard',
   title: 'Service Card (The Armory)',
   type: 'document',
   icon: SwordIcon,
+  orderings: [orderRankOrdering],
   fields: [
+    orderRankField({ type: 'armoryCard' }),
     defineField({
       name: 'title',
       title: 'Service Name',
@@ -28,20 +31,6 @@ export default defineType({
       description: 'The detailed description of this service. This is shown when a visitor clicks on the card.',
       validation: (rule) => rule.required(),
     }),
-    defineField({
-      name: 'order',
-      title: 'Display Order',
-      type: 'number',
-      description: 'Controls the order of the cards on the website. Lower numbers appear first. Leave at 0 if unsure.',
-      initialValue: 0,
-    }),
-  ],
-  orderings: [
-    {
-      title: 'Display Order',
-      name: 'orderAsc',
-      by: [{field: 'order', direction: 'asc'}],
-    },
   ],
   preview: {
     select: {

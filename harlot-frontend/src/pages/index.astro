@@ -24,9 +24,9 @@ let sanEn = {};
 if (sanityClient) {
   try {
     siteSettings = await sanityClient.fetch(`*[_type == "siteSettings"][0]`);
-    armoryCards = await sanityClient.fetch(`*[_type == "armoryCard"] | order(order asc)`);
-    aftercareSteps = await sanityClient.fetch(`*[_type == "aftercareStep"] | order(order asc)`);
-    faqItems = await sanityClient.fetch(`*[_type == "faqItem"] | order(order asc)`);
+    armoryCards = await sanityClient.fetch(`*[_type == "armoryCard"] | order(orderRank)`);
+    aftercareSteps = await sanityClient.fetch(`*[_type == "aftercareStep"] | order(orderRank)`);
+    faqItems = await sanityClient.fetch(`*[_type == "faqItem"] | order(orderRank)`);
 
     if (siteSettings) {
       if (siteSettings.metaTitle) { sanHe['meta.title'] = siteSettings.metaTitle.he; sanEn['meta.title'] = siteSettings.metaTitle.en; }

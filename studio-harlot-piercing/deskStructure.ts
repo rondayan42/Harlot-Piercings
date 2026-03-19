@@ -1,7 +1,8 @@
 import {StructureBuilder} from 'sanity/structure'
 import { EyeIcon, SwordIcon, BloodDropIcon, KeyIcon, ReliquaryIcon } from './customIcons'
+import {orderableDocumentListDeskItem} from '@sanity/orderable-document-list'
 
-export const deskStructure = (S: StructureBuilder) =>
+export const deskStructure = (S: StructureBuilder, context: any) =>
   S.list()
     .title('🏰 Harlot Piercings')
     .items([
@@ -15,24 +16,32 @@ export const deskStructure = (S: StructureBuilder) =>
             .title('Edit Global Settings')
         ),
       S.divider(),
-      S.listItem()
-        .title('Services (The Armory)')
-        .schemaType('armoryCard')
-        .icon(SwordIcon)
-        .child(S.documentTypeList('armoryCard').title('All Services')),
-      S.listItem()
-        .title('Aftercare Steps (The Ritual)')
-        .schemaType('aftercareStep')
-        .icon(BloodDropIcon)
-        .child(S.documentTypeList('aftercareStep').title('All Aftercare Steps')),
-      S.listItem()
-        .title('FAQs (The Inquisition)')
-        .schemaType('faqItem')
-        .icon(KeyIcon)
-        .child(S.documentTypeList('faqItem').title('All FAQs')),
-      S.listItem()
-        .title('Gallery Images (The Reliquary)')
-        .schemaType('galleryImage')
-        .icon(ReliquaryIcon)
-        .child(S.documentTypeList('galleryImage').title('All Gallery Images')),
+      orderableDocumentListDeskItem({
+        type: 'armoryCard',
+        title: 'Services (The Armory)',
+        icon: SwordIcon,
+        S,
+        context,
+      }),
+      orderableDocumentListDeskItem({
+        type: 'aftercareStep',
+        title: 'Aftercare Steps (The Ritual)',
+        icon: BloodDropIcon,
+        S,
+        context,
+      }),
+      orderableDocumentListDeskItem({
+        type: 'faqItem',
+        title: 'FAQs (The Inquisition)',
+        icon: KeyIcon,
+        S,
+        context,
+      }),
+      orderableDocumentListDeskItem({
+        type: 'galleryImage',
+        title: 'Gallery Images (The Reliquary)',
+        icon: ReliquaryIcon,
+        S,
+        context,
+      }),
     ])
