@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       // Close mobile nav if open
       document.getElementById('navLinks').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('active');
     });
   });
 
