@@ -1,0 +1,34 @@
+---
+const { items = [] } = Astro.props;
+
+const renderSteps = items.length > 0 ? items.map((_, i) => ({
+  titleKey: `dynamic.aftercare.${i}.title`,
+  bodyKey: `dynamic.aftercare.${i}.body`
+})) : [
+  { titleKey: 'ritual.item1.title', bodyKey: 'ritual.item1.body' },
+  { titleKey: 'ritual.item2.title', bodyKey: 'ritual.item2.body' },
+  { titleKey: 'ritual.item3.title', bodyKey: 'ritual.item3.body' },
+  { titleKey: 'ritual.item4.title', bodyKey: 'ritual.item4.body' },
+  { titleKey: 'ritual.item5.title', bodyKey: 'ritual.item5.body' },
+  { titleKey: 'ritual.item6.title', bodyKey: 'ritual.item6.body' },
+];
+---
+
+<!-- SECTION 4: THE RITUAL (Aftercare) -->
+<section id="aftercare">
+  <div class="section-wrapper">
+    <div class="ritual-container reveal">
+      <h2 data-i18n="ritual.title">הטקס</h2>
+      <p class="ritual-subtitle" data-i18n="ritual.subtitle">הצווים המקודשים של הריפוי</p>
+
+      <ul class="ritual-list">
+        {renderSteps.map((step) => (
+          <li>
+            <strong data-i18n={step.titleKey}>שלב החלמה:</strong>
+            <span data-i18n={step.bodyKey}>טקסט החלמה זמני...</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,36 @@
+---
+const { items = [] } = Astro.props;
+
+const renderFaqs = items.length > 0 ? items.map((_, i) => ({
+  questionKey: `dynamic.faq.${i}.question`,
+  answerKey: `dynamic.faq.${i}.answer`
+})) : [
+  { questionKey: 'faq.q1', answerKey: 'faq.a1' },
+  { questionKey: 'faq.q2', answerKey: 'faq.a2' },
+  { questionKey: 'faq.q3', answerKey: 'faq.a3' },
+];
+---
+
+<!-- SECTION 4.5: THE INQUISITION (FAQ) -->
+<section id="faq">
+  <div class="section-wrapper">
+    <div class="faq-container reveal">
+      <h2 class="section-title" data-i18n="faq.title" style="margin-bottom: 0.5rem;">החקירה</h2>
+      <p class="ritual-subtitle" data-i18n="faq.subtitle">תשובות לשאלות נפוצות</p>
+
+      <div class="faq-accordion">
+        {renderFaqs.map((faq) => (
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span data-i18n={faq.questionKey}>שאלה זמנית שידרוס i18n?</span>
+              <i class="fa-solid fa-chevron-down faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner" data-i18n={faq.answerKey}>תשובה זמנית...</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

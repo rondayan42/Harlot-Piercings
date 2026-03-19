@@ -1,0 +1,72 @@
+---
+/**
+ * Gallery component — fetches images from Sanity when available,
+ * falls back to static images otherwise.
+ */
+import { sanityClient, urlFor } from '../lib/sanity.js';
+
+// Try fetching gallery images from Sanity (only if client is configured)
+let sanityImages = [];
+if (sanityClient) {
+  try {
+    sanityImages = await sanityClient.fetch(
+      `*[_type == "galleryImage"] | order(order asc) {
+        _id,
+        image,
+        titleHe,
+        titleEn,
+        altText
+      }`
+    );
+  } catch (e) {
+    // Sanity fetch failed — fall back to static images
+    console.warn('Sanity fetch failed, using static gallery images:', e.message);
+  }
+}
+
+// Static fallback gallery data
+const staticImages = [
+  { src: '/images/gallery-ear.png', alt: 'Ear constellation piercing project', labelKey: 'gallery.ear', label: 'קונסטלציית אוזן' },
+  { src: '/images/gallery-septum.png', alt: 'Ornate septum piercing', labelKey: 'gallery.septum', label: 'ספטום' },
+  { src: '/images/gallery-industrial.png', alt: 'Industrial bar piercing', labelKey: 'gallery.industrial', label: 'אינדסטריאל' },
+  { src: '/images/gallery-nostril.png', alt: 'Nostril piercing', labelKey: 'gallery.nostril', label: 'נחיר' },
+  { src: '/images/gallery-anchor.png', alt: 'Dermal surface anchor', labelKey: 'gallery.anchor', label: 'עוגן עורי' },
+  { src: '/images/gallery-lip.png', alt: 'Labret lip piercing', labelKey: 'gallery.lip', label: 'לברט' },
+];
+
+const useSanity = sanityImages.length > 0;
+---
+
+<!-- SECTION 5: THE GALLERY -->
+<section id="gallery">
+  <div class="section-wrapper">
+    <h2 class="section-title reveal" data-i18n="gallery.title">הגלריה</h2>
+    <p class="gallery-subtitle reveal" data-i18n="gallery.subtitle">עדות לעבודה. כל תמונה — טקס שהושלם.</p>
+
+    <div class="gallery-grid reveal">
+      {useSanity ? (
+        sanityImages.map((item) => (
+          <div class="gallery-item" tabindex="0">
+            <img
+              src={urlFor(item.image).width(600).height(600).url()}
+              alt={item.altText || ''}
+              loading="lazy"
+            />
+            <div class="gallery-overlay">
+              <span class="gallery-label">{item.titleHe || item.titleEn || ''}</span>
+            </div>
+          </div>
+        ))
+      ) : (
+        staticImages.map((item) => (
+          <div class="gallery-item" tabindex="0">
+            <img src={item.src} alt={item.alt} loading="lazy" />
+            <div class="gallery-overlay">
+              <span class="gallery-label" data-i18n={item.labelKey}>{item.label}</span>
+            </div>
+          </div>
+        ))
+      )}
+    </div>
+  </div>
+</section>

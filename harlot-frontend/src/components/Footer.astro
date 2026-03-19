@@ -1,0 +1,62 @@
+<!-- SECTION 6: THE LEDGER (Footer / Contact) -->
+<footer class="footer" id="contact">
+  <div class="footer-content">
+
+    <!-- Booking Form -->
+    <div class="booking-section">
+      <h2 data-i18n="ledger.title">הספר</h2>
+      <form class="booking-form" id="bookingForm">
+        <div class="form-group">
+          <label for="clientName" data-i18n="ledger.name">שמך</label>
+          <input type="text" id="clientName" name="clientName" data-i18n-attr="placeholder"
+            data-i18n="ledger.namePlaceholder" placeholder="הצהירי את זהותך" required>
+        </div>
+        <div class="form-group">
+          <label for="modification" data-i18n="ledger.mod">השינוי הרצוי</label>
+          <textarea id="modification" name="modification" data-i18n-attr="placeholder"
+            data-i18n="ledger.modPlaceholder" placeholder="תארי את הטקס שאת מבקשת"
+            required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="confessionDate" data-i18n="ledger.date">תאריך הווידוי</label>
+          <input type="date" id="confessionDate" name="confessionDate" required>
+        </div>
+        <button type="submit" class="btn-submit" data-i18n="ledger.submit">שלחי את בקשתך</button>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <i class="fa-solid fa-skull"></i> <span data-i18n="ledger.success">בקשתך התקבלה. המתיני לזימונך.</span> <i class="fa-solid fa-skull"></i>
+      </div>
+    </div>
+
+    <!-- Studio Info -->
+    <div class="studio-info">
+      <h3 data-i18n="ledger.coords">קואורדינטות הסטודיו</h3>
+      <p>
+        <span class="info-label" data-i18n="ledger.location">מיקום</span>
+        <span data-i18n="ledger.address">המגדל השחור, 13 רחוב הברזל<br>הרובע הישן, העיר</span>
+      </p>
+      <p>
+        <span class="info-label" data-i18n="ledger.hours">שעות פעילות</span>
+        <span data-i18n="ledger.hoursVal">שלישי – שבת · 11:00 – 19:00<br>בתיאום מראש בלבד</span>
+      </p>
+      <p>
+        <span class="info-label" data-i18n="ledger.summon">זמינות</span>
+        enquiries@harlotpiercings.com
+      </p>
+
+      <div class="social-links">
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="TikTok">TikTok</a>
+        <a href="#" aria-label="Portfolio" data-i18n="ledger.portfolio">תיק עבודות</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Morningstar border -->
+  <div class="footer-morningstar">
+    <span class="morningstar-icons"><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i
+        class="fa-solid fa-star"></i></span>
+    <span data-i18n="ledger.copyright">© MMXXVI Harlot Piercing · כל הזכויות שמורות</span>
+  </div>
+</footer>

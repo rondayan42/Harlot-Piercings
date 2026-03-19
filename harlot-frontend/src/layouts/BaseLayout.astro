@@ -1,0 +1,26 @@
+---
+const { title = 'Harlot Piercing — עטרו את הבשר' } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" data-i18n-attr="content" data-i18n="meta.description"
+    content="Harlot Piercing — סטודיו פירסינג עצמאי ברמת פרימיום. אסתטיקה של שריון מימי הביניים ודיוק אנטומי. עטרו את הבשר. התריסו נגד הכבלים.">
+  <title data-i18n="meta.title">{title}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <slot />
+
+  <script src="/src/scripts/translations.js" is:inline></script>
+  <script src="/src/scripts/main.js" is:inline></script>
+</body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

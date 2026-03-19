@@ -1,0 +1,31 @@
+---
+const { items = [] } = Astro.props;
+
+const renderServices = items.length > 0 ? items.map((_, i) => ({
+  titleKey: `dynamic.armory.${i}.title`,
+  subtitleKey: `dynamic.armory.${i}.subtitle`,
+  bodyKey: `dynamic.armory.${i}.body`
+})) : [
+  { titleKey: 'armory.card1.title', subtitleKey: 'armory.card1.subtitle', bodyKey: 'armory.card1.body' },
+  { titleKey: 'armory.card2.title', subtitleKey: 'armory.card2.subtitle', bodyKey: 'armory.card2.body' },
+  { titleKey: 'armory.card3.title', subtitleKey: 'armory.card3.subtitle', bodyKey: 'armory.card3.body' },
+];
+---
+
+<!-- SECTION 2: THE ARMORY (Services) -->
+<section id="services">
+  <div class="section-wrapper">
+    <h2 class="section-title reveal" data-i18n="armory.title">הנשקייה</h2>
+
+    <div class="services-grid">
+      {renderServices.map((service) => (
+        <div class="grimoire-card reveal">
+          <h3 data-i18n={service.titleKey}>הפנים</h3>
+          <span class="card-subtitle" data-i18n={service.subtitleKey}>ארכיטקטורת הפנים</span>
+          <p data-i18n={service.bodyKey}>התערבויות מדויקות על פני הפנים... (טקסט זמני שידרוס על ידי i18n)</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

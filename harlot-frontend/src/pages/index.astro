@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Divider from '../components/Divider.astro';
+import Services from '../components/Services.astro';
+import About from '../components/About.astro';
+import Aftercare from '../components/Aftercare.astro';
+import Faq from '../components/Faq.astro';
+import Gallery from '../components/Gallery.astro';
+import Footer from '../components/Footer.astro';
+import Lightbox from '../components/Lightbox.astro';
+
+import { sanityClient } from '../lib/sanity.js';
+
+let siteSettings = null;
+let armoryCards = [];
+let aftercareSteps = [];
+let faqItems = [];
+
+let sanHe = {};
+let sanEn = {};
+
+if (sanityClient) {
+  try {
+    siteSettings = await sanityClient.fetch(`*[_type == "siteSettings"][0]`);
+    armoryCards = await sanityClient.fetch(`*[_type == "armoryCard"] | order(order asc)`);
+    aftercareSteps = await sanityClient.fetch(`*[_type == "aftercareStep"] | order(order asc)`);
+    faqItems = await sanityClient.fetch(`*[_type == "faqItem"] | order(order asc)`);
+
+    if (siteSettings) {
+      if (siteSettings.metaTitle) { sanHe['meta.title'] = siteSettings.metaTitle.he; sanEn['meta.title'] = siteSettings.metaTitle.en; }
+      if (siteSettings.metaDesc) { sanHe['meta.description'] = siteSettings.metaDesc.he; sanEn['meta.description'] = siteSettings.metaDesc.en; }
+      if (siteSettings.heroSubtitle) { sanHe['hero.subtitle'] = siteSettings.heroSubtitle.he; sanEn['hero.subtitle'] = siteSettings.heroSubtitle.en; }
+      if (siteSettings.heroCta) { sanHe['hero.cta'] = siteSettings.heroCta.he; sanEn['hero.cta'] = siteSettings.heroCta.en; }
+      
+      if (siteSettings.aboutP1) { sanHe['about.p1'] = siteSettings.aboutP1.he; sanEn['about.p1'] = siteSettings.aboutP1.en; }
+      if (siteSettings.aboutP2) { sanHe['about.p2'] = siteSettings.aboutP2.he; sanEn['about.p2'] = siteSettings.aboutP2.en; }
+      if (siteSettings.aboutP3) { sanHe['about.p3'] = siteSettings.aboutP3.he; sanEn['about.p3'] = siteSettings.aboutP3.en; }
+      if (siteSettings.aboutSignature) { sanHe['about.signature'] = siteSettings.aboutSignature.he; sanEn['about.signature'] = siteSettings.aboutSignature.en; }
+
+      if (siteSettings.footerAddress) { sanHe['ledger.address'] = siteSettings.footerAddress.he; sanEn['ledger.address'] = siteSettings.footerAddress.en; }
+      if (siteSettings.footerHours) { sanHe['ledger.hoursVal'] = siteSettings.footerHours.he; sanEn['ledger.hoursVal'] = siteSettings.footerHours.en; }
+      if (siteSettings.footerCopyright) { sanHe['ledger.copyright'] = siteSettings.footerCopyright.he; sanEn['ledger.copyright'] = siteSettings.footerCopyright.en; }
+    }
+
+    if (armoryCards?.length) {
+      armoryCards.forEach((card, index) => {
+        sanHe[`dynamic.armory.${index}.title`] = card.title?.he || '';
+        sanEn[`dynamic.armory.${index}.title`] = card.title?.en || '';
+        sanHe[`dynamic.armory.${index}.subtitle`] = card.subtitle?.he || '';
+        sanEn[`dynamic.armory.${index}.subtitle`] = card.subtitle?.en || '';
+        sanHe[`dynamic.armory.${index}.body`] = card.body?.he || '';
+        sanEn[`dynamic.armory.${index}.body`] = card.body?.en || '';
+      });
+    }
+
+    if (aftercareSteps?.length) {
+      aftercareSteps.forEach((step, index) => {
+        sanHe[`dynamic.aftercare.${index}.title`] = step.title?.he || '';
+        sanEn[`dynamic.aftercare.${index}.title`] = step.title?.en || '';
+        sanHe[`dynamic.aftercare.${index}.body`] = step.body?.he || '';
+        sanEn[`dynamic.aftercare.${index}.body`] = step.body?.en || '';
+      });
+    }
+
+    if (faqItems?.length) {
+      faqItems.forEach((faq, index) => {
+        sanHe[`dynamic.faq.${index}.question`] = faq.question?.he || '';
+        sanEn[`dynamic.faq.${index}.question`] = faq.question?.en || '';
+        sanHe[`dynamic.faq.${index}.answer`] = faq.answer?.he || '';
+        sanEn[`dynamic.faq.${index}.answer`] = faq.answer?.en || '';
+      });
+    }
+
+  } catch (err) {
+    console.error("Sanity fetch failed:", err);
+  }
+}
+
+const sanityTranslations = { he: sanHe, en: sanEn };
+---
+<script is:inline define:vars={{ sanityTranslations }}>
+  window.SANITY_TRANSLATIONS = sanityTranslations;
+</script>
+<BaseLayout>
+  <Nav />
+  <Hero />
+  <Divider />
+  <Services items={armoryCards} />
+  <Divider />
+  <About />
+  <Divider />
+  <Aftercare items={aftercareSteps} />
+  <Divider />
+  <Faq items={faqItems} />
+  <Divider />
+  <Gallery />
+  <Divider />
+  <Footer />
+  <Lightbox />
+</BaseLayout>
