@@ -1,9 +1,11 @@
 import {defineField, defineType} from 'sanity'
+import {MenuIcon} from '@sanity/icons'
 
 export default defineType({
   name: 'armoryCard',
   title: 'Service Card (The Armory)',
   type: 'document',
+  icon: MenuIcon,
   fields: [
     defineField({
       name: 'title',
@@ -42,5 +44,12 @@ export default defineType({
       title: 'title.en',
       subtitle: 'title.he',
     },
+    prepare(selection: any) {
+      const {title, subtitle} = selection
+      return {
+        title: title ? title : '⚠️ English Missing',
+        subtitle: subtitle ? subtitle : '⚠️ Hebrew Missing'
+      }
+    }
   },
 })

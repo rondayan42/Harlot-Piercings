@@ -13,6 +13,10 @@ export const sanityClient = isSanityConfigured
       dataset,
       useCdn: true,
       apiVersion: '2024-01-01',
+      stega: {
+        enabled: true,
+        studioUrl: 'http://localhost:3333',
+      },
     })
   : null;
 

@@ -1,9 +1,11 @@
 import {defineField, defineType} from 'sanity'
+import {CheckmarkCircleIcon} from '@sanity/icons'
 
 export default defineType({
   name: 'aftercareStep',
   title: 'Aftercare Step (The Ritual)',
   type: 'document',
+  icon: CheckmarkCircleIcon,
   fields: [
     defineField({
       name: 'title',
@@ -37,5 +39,12 @@ export default defineType({
       title: 'title.en',
       subtitle: 'title.he',
     },
+    prepare(selection: any) {
+      const {title, subtitle} = selection
+      return {
+        title: title ? title : '⚠️ English Missing',
+        subtitle: subtitle ? subtitle : '⚠️ Hebrew Missing'
+      }
+    }
   },
 })

@@ -4,10 +4,20 @@
  * This document type allows the piercer to upload and manage gallery images
  * with bilingual captions (Hebrew + English) and accessibility text.
  */
+import {ImagesIcon} from '@sanity/icons'
+
 export default {
   name: 'galleryImage',
   title: 'Gallery Image',
   type: 'document',
+  icon: ImagesIcon,
+  fieldsets: [
+    {
+      name: 'captions',
+      title: 'Captions',
+      options: { columns: 2 }
+    }
+  ],
   fields: [
     {
       name: 'image',
@@ -22,6 +32,7 @@ export default {
       name: 'titleHe',
       title: 'Hebrew Caption',
       type: 'string',
+      fieldset: 'captions',
       description: 'כיתוב בעברית (e.g., קונסטלציית אוזן)',
       validation: (Rule) => Rule.required(),
     },
@@ -29,6 +40,7 @@ export default {
       name: 'titleEn',
       title: 'English Caption',
       type: 'string',
+      fieldset: 'captions',
       description: 'Caption in English (e.g., Ear Constellation)',
       validation: (Rule) => Rule.required(),
     },
@@ -60,5 +72,13 @@ export default {
       subtitle: 'titleHe',
       media: 'image',
     },
+    prepare(selection) {
+      const {title, subtitle, media} = selection
+      return {
+        title: title ? title : '⚠️ English Missing',
+        subtitle: subtitle ? subtitle : '⚠️ Hebrew Missing',
+        media: media,
+      }
+    }
   },
 };

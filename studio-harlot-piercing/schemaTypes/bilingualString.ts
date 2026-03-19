@@ -4,6 +4,9 @@ export default defineType({
   name: 'bilingualString',
   title: 'Bilingual String',
   type: 'object',
+  options: {
+    columns: 2,
+  },
   fields: [
     defineField({
       name: 'he',
