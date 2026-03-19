@@ -5,6 +5,33 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // ── Hamburger Menu Toggle ──
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+
+  const toggleMobileNav = (forceClose = false) => {
+    const willOpen = forceClose ? false : !navLinks.classList.contains('open');
+
+    if (willOpen) {
+      navLinks.classList.add('open');
+      hamburger.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    } else {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  };
+
+  hamburger.addEventListener('click', () => toggleMobileNav());
+
+  // Close mobile nav when tapping the overlay background (not a link)
+  navLinks.addEventListener('click', (e) => {
+    if (e.target === navLinks) {
+      toggleMobileNav(true);
+    }
+  });
+
   // ── Smooth Scroll for anchor links ──
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
@@ -16,19 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo({ top, behavior: 'smooth' });
       }
       // Close mobile nav if open
-      document.getElementById('navLinks').classList.remove('open');
-      document.getElementById('hamburger').classList.remove('active');
+      toggleMobileNav(true);
     });
-  });
-
-  // ── Hamburger Menu Toggle ──
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
-
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-    // Animate hamburger
-    hamburger.classList.toggle('active');
   });
 
   // ── Scroll Reveal (Intersection Observer) ──

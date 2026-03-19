@@ -116,7 +116,7 @@ a:hover {
   z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 3rem 2rem;
+  padding: 2rem;
 }
 
 /* Soft background bands for content sections — gradual fade, no hard edges */
@@ -452,7 +452,7 @@ body.lang-he .nav-links a {
   align-items: center;
   justify-content: center;
   padding: 0;
-  margin: -2rem auto;
+  margin: -3.5rem auto;
   line-height: 0;
   font-size: 0;
   position: relative;
@@ -872,21 +872,8 @@ body.lang-en .faq-question { text-align: left; }
   box-shadow: 0 0 20px rgba(184, 150, 61, 0.1);
 }
 
-@media (max-width: 768px) {
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
 
-  .gallery-overlay {
-    opacity: 1;
-  }
-}
 
-@media (max-width: 480px) {
-  .gallery-grid {
-    grid-template-columns: 1fr;
-  }
-}
 
 /* ============================================================
    FOOTER — THE LEDGER
@@ -1188,28 +1175,96 @@ body.lang-en .faq-question { text-align: left; }
 }
 
 /* ============================================================
-   RESPONSIVE
+   RESPONSIVE — MOBILE-FIRST REDESIGN
    ============================================================ */
+
+/* --- Global mobile touch optimization --- */
 @media (max-width: 768px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* ── Navigation: Full-screen overlay ── */
+  .nav-bar {
+    padding: 0.6rem 1.2rem;
+  }
+
+  .nav-logo .brand-en {
+    font-size: 1.3rem;
+  }
+
+  .nav-logo .brand-he {
+    font-size: 0.85rem;
+  }
+
   .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
+    display: flex;
+    position: fixed;
+    top: 0;
     left: 0;
     right: 0;
+    bottom: 0;
     flex-direction: column;
-    background: rgba(31, 10, 42, 0.97);
-    padding: 1.5rem 2rem;
-    gap: 1rem;
-    border-bottom: 1px solid rgba(184, 150, 61, 0.3);
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    background: rgba(10, 8, 16, 1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(1.05);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .nav-links.open {
-    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .nav-links.open li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger the link animations */
+  .nav-links.open li:nth-child(1) { transition-delay: 0.08s; }
+  .nav-links.open li:nth-child(2) { transition-delay: 0.14s; }
+  .nav-links.open li:nth-child(3) { transition-delay: 0.20s; }
+  .nav-links.open li:nth-child(4) { transition-delay: 0.26s; }
+  .nav-links.open li:nth-child(5) { transition-delay: 0.32s; }
+  .nav-links.open li:nth-child(6) { transition-delay: 0.38s; }
+
+  .nav-links a {
+    display: block;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    color: var(--card-text);
+    border-bottom: 1px solid rgba(184, 150, 61, 0.12);
+  }
+
+  .nav-links li:last-child a {
+    border-bottom: none;
+  }
+
+  .nav-links a::after {
+    display: none;
   }
 
   .hamburger {
     display: flex;
+    z-index: 1001;
   }
 
   .hamburger.active span:nth-child(1) {
@@ -1222,6 +1277,80 @@ body.lang-en .faq-question { text-align: left; }
     transform: translateY(-7px) rotate(-45deg);
   }
 
+  /* ── Hero: Mobile viewport optimization ── */
+  .hero {
+    min-height: 100svh;
+  }
+
+  .hero-content {
+    padding: 1.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2.4rem, 10vw, 3.5rem);
+  }
+
+  .hero-content h1 .brand-he {
+    font-size: clamp(1.4rem, 5vw, 2rem);
+    margin-top: 0.4rem;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(0.85rem, 3.5vw, 1.1rem);
+    letter-spacing: 0.12em;
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
+  }
+
+  .btn-cta {
+    width: 100%;
+    text-align: center;
+    padding: 1.1rem 2rem;
+    font-size: 0.95rem;
+  }
+
+  /* ── Section general ── */
+  .section-wrapper {
+    padding: 2.5rem 1rem;
+  }
+
+  .section-title {
+    margin-bottom: 2rem;
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+  }
+
+  /* ── Services: Touch-friendly cards ── */
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .grimoire-card {
+    padding: 2rem 1.4rem;
+    border-top: 3px solid rgba(184, 150, 61, 0.5);
+  }
+
+  .grimoire-card:hover {
+    transform: none;
+  }
+
+  .grimoire-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .grimoire-card .card-subtitle {
+    margin-bottom: 1rem;
+    font-size: 0.75rem;
+  }
+
+  .grimoire-card p {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  /* ── About: Stacked layout ── */
   .about-layout {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -1229,6 +1358,107 @@ body.lang-en .faq-question { text-align: left; }
 
   .about-image-frame {
     order: -1;
+    max-width: 70%;
+    margin: 0 auto;
+  }
+
+  .about-image-frame::before {
+    inset: -8px;
+  }
+
+  .about-text {
+    padding: 2rem 1.4rem;
+  }
+
+  .about-text h2 {
+    text-align: center;
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .about-text .signature {
+    text-align: center;
+    display: block;
+    font-size: 1.4rem;
+  }
+
+  /* ── Aftercare: Ritual container ── */
+  .ritual-container {
+    padding: 2rem 1.2rem;
+  }
+
+  .ritual-container h2 {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+  }
+
+  .ritual-subtitle {
+    font-size: 0.75rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .ritual-list li {
+    padding: 0.8rem 0 0.8rem 2rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .ritual-list li::before {
+    top: 0.85rem;
+    font-size: 0.75rem;
+  }
+
+  /* ── FAQ: Better touch targets ── */
+  .faq-question {
+    padding: 1.2rem 1rem;
+    font-size: 0.95rem;
+    min-height: 52px;
+    gap: 0.8rem;
+  }
+
+  .faq-answer-inner {
+    padding: 0 1rem;
+    font-size: 0.95rem;
+  }
+
+  .faq-item.active .faq-answer-inner {
+    padding-bottom: 1.2rem;
+  }
+
+  /* ── Gallery: Always-visible labels ── */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+
+  .gallery-overlay {
+    opacity: 1;
+    background: linear-gradient(to top, rgba(10, 8, 14, 0.9) 0%, transparent 60%);
+    padding: 0.7rem 0.8rem;
+  }
+
+  .gallery-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+  }
+
+  .gallery-item {
+    border-radius: 3px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .gallery-item:hover img,
+  .gallery-item:focus img,
+  .gallery-item:active img {
+    transform: none;
+  }
+
+  /* ── Footer: Mobile form ── */
+  .footer {
+    padding: 3rem 1rem 1.5rem;
   }
 
   .footer-content {
@@ -1236,63 +1466,172 @@ body.lang-en .faq-question { text-align: left; }
     gap: 2.5rem;
   }
 
-  .services-grid {
-    grid-template-columns: 1fr;
+  .footer h2 {
+    text-align: center;
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
   }
 
-  .ritual-container {
-    padding: 2.5rem 1.5rem;
+  .footer h3 {
+    text-align: center;
+    font-size: clamp(1.2rem, 5vw, 1.4rem);
   }
 
-  .section-wrapper {
-    padding: 3rem 1.2rem;
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: 0.9rem 1rem;
+    font-size: 16px; /* Prevents iOS zoom on focus */
+    min-height: 48px;
+    border-radius: 4px;
   }
 
-  .divider-img {
-    width: min(280px, 60vw);
+  .form-group textarea {
+    min-height: 100px;
   }
 
-  .grimoire-card, .about-text {
-    padding: 2rem 1.5rem;
-  }
-
-  .faq-question {
-    padding: 1.2rem 1rem;
-    font-size: 0.95rem;
-  }
-
-  .faq-answer-inner {
-    padding: 0 1rem;
-  }
-
-  .faq-item.active .faq-answer-inner {
-    padding-bottom: 1.2rem;
-  }
-
-  .lightbox-close {
-    top: 1rem;
-    right: 1.5rem;
-    font-size: 2.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-content h1 {
-    font-size: 2.2rem;
-  }
-
-  .hero-subtitle {
+  .btn-submit {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 2rem;
     font-size: 0.9rem;
-    letter-spacing: 0.12em;
+    min-height: 52px;
+  }
+
+  .studio-info {
+    text-align: center;
+  }
+
+  .studio-info p {
+    margin-bottom: 1.2rem;
   }
 
   .social-links {
+    justify-content: center;
     flex-wrap: wrap;
+    gap: 0.8rem;
   }
 
-  .btn-cta, .btn-submit {
-    width: 100%;
-    text-align: center;
-    box-sizing: border-box;
+  .social-links a {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ── Dividers: Scale for mobile ── */
+  .divider-sword {
+    margin: -1rem auto;
+  }
+
+  .divider-img {
+    width: min(200px, 50vw);
+  }
+
+  /* ── Scroll reveal: Softer on mobile ── */
+  .reveal {
+    transform: translateY(15px);
+  }
+
+  /* ── Lightbox: Mobile adjustments ── */
+  .lightbox-close {
+    top: 1rem;
+    right: 1.2rem;
+    font-size: 2.5rem;
+  }
+
+  .lightbox-content img {
+    max-height: 70vh;
+  }
+
+  .lightbox-caption {
+    font-size: 0.85rem;
+    padding: 0 1rem;
+  }
+
+  /* ── Footer morningstar ── */
+  .footer-morningstar {
+    margin-top: 2rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+  }
+}
+
+/* --- Extra small screens (≤ 480px) --- */
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: clamp(2rem, 11vw, 2.8rem);
+  }
+
+  .hero-content h1 .brand-he {
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+  }
+
+  .hero-subtitle {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+  }
+
+  .section-wrapper {
+    padding: 2rem 0.8rem;
+  }
+
+  .grimoire-card {
+    padding: 1.6rem 1.2rem;
+  }
+
+  .about-image-frame {
+    max-width: 80%;
+  }
+
+  .ritual-container {
+    padding: 1.6rem 1rem;
+  }
+
+  .ritual-list li {
+    padding-left: 1.8rem;
+    font-size: 0.9rem;
+  }
+
+  .divider-img {
+    width: min(160px, 45vw);
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+    padding: 0.9rem 1.5rem;
+  }
+}
+
+/* --- Landscape mobile --- */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: 100vh;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    margin-bottom: 1rem;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .nav-links li {
+    width: auto;
+  }
+
+  .nav-links a {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    border-bottom: none;
   }
 }
