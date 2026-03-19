@@ -87,4 +87,70 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ── FAQ Accordion (The Inquisition) ──
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  faqItems.forEach(item => {
+    const questionBtn = item.querySelector('.faq-question');
+    
+    questionBtn.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      
+      // Close all other items (optional: remove this loop to allow multiple open at once)
+      faqItems.forEach(otherItem => {
+        otherItem.classList.remove('active');
+        otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+
+      // Toggle clicked item
+      if (!isActive) {
+        item.classList.add('active');
+        questionBtn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // ── Gallery Lightbox ──
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  const lightboxClose = document.getElementById('lightboxClose');
+
+  if (lightbox) {
+    // Open lightbox
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        const label = item.querySelector('.gallery-label');
+        
+        if (img) {
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+          lightboxCaption.textContent = label ? label.textContent : '';
+          lightbox.classList.add('active');
+          document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+      });
+    });
+
+    // Close lightbox function
+    const closeLightbox = () => {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = ''; // Restore scrolling
+      setTimeout(() => {
+        if (!lightbox.classList.contains('active')) lightboxImg.src = ''; 
+      }, 400);
+    };
+
+    // Close events
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+    });
+  }
+
 });

@@ -645,6 +645,86 @@ body.lang-he h3 {
 }
 
 /* ============================================================
+   FAQ — THE INQUISITION
+   ============================================================ */
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.faq-item {
+  background: var(--card-bg);
+  border: 1px solid rgba(184, 150, 61, 0.25);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.faq-item.active {
+  border-color: rgba(184, 150, 61, 0.6);
+  box-shadow: 0 0 15px rgba(184, 150, 61, 0.1);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  border: none;
+  padding: 1.5rem;
+  font-family: var(--font-accent);
+  font-size: 1.05rem;
+  color: var(--accent-gold);
+  cursor: pointer;
+  text-align: right;
+  transition: var(--transition-smooth);
+}
+
+body.lang-en .faq-question { text-align: left; }
+
+.faq-icon {
+  font-size: 0.9rem;
+  transition: transform 0.4s ease;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
+  color: var(--blood-red);
+}
+
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+
+.faq-item.active .faq-answer {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.faq-answer-inner {
+  overflow: hidden;
+  padding: 0 1.5rem;
+  color: #d1d5db;
+  line-height: 1.8;
+}
+
+.faq-item.active .faq-answer-inner {
+  padding-bottom: 1.5rem;
+}
+
+/* ============================================================
    GALLERY — THE RELIQUARY
    ============================================================ */
 #gallery {
@@ -961,6 +1041,81 @@ body.lang-he h3 {
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(15px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   LIGHTBOX MODAL
+   ============================================================ */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(10, 8, 14, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: scale(0.95);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lightbox.active .lightbox-content {
+  transform: scale(1);
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border: 1px solid rgba(184, 150, 61, 0.4);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(184, 150, 61, 0.15);
+}
+
+.lightbox-caption {
+  margin-top: 1rem;
+  font-family: var(--font-accent);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent-gold);
+  text-align: center;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 2.5rem;
+  background: none;
+  border: none;
+  color: var(--accent-gold);
+  font-size: 3rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  z-index: 2001;
+}
+
+.lightbox-close:hover {
+  color: var(--blood-red);
+  transform: scale(1.1);
 }
 
 /* ============================================================

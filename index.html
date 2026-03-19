@@ -24,6 +24,7 @@
       <li><a href="#services" data-i18n="nav.armory">הנשקייה</a></li>
       <li><a href="#about" data-i18n="nav.fleshmancer">ממיר הבשר</a></li>
       <li><a href="#aftercare" data-i18n="nav.ritual">הטקס</a></li>
+      <li><a href="#faq" data-i18n="nav.faq">החקירה</a></li>
       <li><a href="#gallery" data-i18n="nav.gallery">הגלריה</a></li>
       <li><a href="#contact" data-i18n="nav.ledger">הספר</a></li>
     </ul>
@@ -152,6 +153,53 @@
   </div>
 
   <!-- ═══════════════════════════════════════════════
+       SECTION 4.5: THE INQUISITION (FAQ)
+       ═══════════════════════════════════════════════ -->
+  <section id="faq">
+    <div class="section-wrapper">
+      <div class="faq-container reveal">
+        <h2 class="section-title" data-i18n="faq.title" style="margin-bottom: 0.5rem;">החקירה</h2>
+        <p class="ritual-subtitle" data-i18n="faq.subtitle">תשובות לשאלות נפוצות</p>
+
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span data-i18n="faq.q1">באיזה חומרים את משתמשת לתכשיטים?</span>
+              <i class="fa-solid fa-chevron-down faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner" data-i18n="faq.a1">אני עובדת אך ורק עם טיטניום ברמת שתל...</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span data-i18n="faq.q2">האם אפשר להביא תכשיט משלי?</span>
+              <i class="fa-solid fa-chevron-down faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner" data-i18n="faq.a2">לא. אינני יכולה לערוב לסטריליות...</div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span data-i18n="faq.q3">איך עובד ניהול כאב?</span>
+              <i class="fa-solid fa-chevron-down faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner" data-i18n="faq.a3">הכאב הוא חולף, העיטור הוא נצחי...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⚔ Broadsword Divider ⚔ -->
+  <div class="divider-sword">
+    <img src="images/broadsword-divider.png" alt="Decorative broadsword divider" class="divider-img">
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
        SECTION 5: THE GALLERY
        ═══════════════════════════════════════════════ -->
   <section id="gallery">
@@ -269,6 +317,17 @@
       <span data-i18n="ledger.copyright">© MMXXVI Harlot Piercing · כל הזכויות שמורות</span>
     </div>
   </footer>
+
+  <!-- ═══════════════════════════════════════════════
+       LIGHTBOX MODAL
+       ═══════════════════════════════════════════════ -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close Lightbox">&times;</button>
+    <div class="lightbox-content">
+      <img src="" alt="" id="lightboxImg">
+      <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+  </div>
 
   <script src="translations.js"></script>
   <script src="script.js"></script>

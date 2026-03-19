@@ -11,6 +11,7 @@ const TRANSLATIONS = {
     'nav.armory': 'הנשקייה',
     'nav.fleshmancer': 'אשפית הבשר',
     'nav.ritual': 'הטקס',
+    'nav.faq': 'החקירה',
     'nav.gallery': 'הגלריה',
     'nav.ledger': 'פנקס הרשומות',
 
@@ -49,6 +50,15 @@ const TRANSLATIONS = {
     'ritual.item6.title': 'סבלנות היא הניסיון האחרון:',
     'ritual.item6.body': 'החלמה מלאה אורכת חודשים, ולעיתים אף מתמשכת על פני שנה שלמה. אל תקטינו, תחליפו, או תסירו תכשיטים לפני שקיבלתם על כך אישור מהפירסר שלכם. הבשר זוכר כל חוסר סבלנות.',
 
+    'faq.title': 'החקירה',
+    'faq.subtitle': 'תשובות לשאלות נפוצות',
+    'faq.q1': 'באיזה חומרים את משתמשת לתכשיטים?',
+    'faq.a1': 'אני עובדת אך ורק עם טיטניום ברמת שתל (ASTM-F136) וזהב מלא (14k/18k). שום מתכת נחותה לא תיכנס בשערי קליניקה זו. הגוף שלכם דורש חומרים שלא יבגדו בו.',
+    'faq.q2': 'האם אפשר להביא תכשיט משלי?',
+    'faq.a2': 'לא. אינני יכולה לערוב לסטריליות או לאיכות הסגסוגת של תכשיטים חיצוניים. כל טקס מתחיל עם כלי קודש חדש וטהור היישר מן הנשקייה שלי.',
+    'faq.q3': 'איך עובד ניהול כאב?',
+    'faq.a3': 'הכאב הוא חולף, העיטור הוא נצחי. אני עובדת בשיטות ממוקדות ומהירות, אך אינני משתמשת במשחות אלחוש — הן משנות את מרקם העור ופוגמות בדיוק האנטומי. נשמו עמוק, וקבלו את השינוי.',
+
     'gallery.title': 'הגלריה',
     'gallery.subtitle': 'עדות חיה לעבודה. כל תמונה מספרת על טקס שהושלם.',
     'gallery.ear': 'קונסטלציית אוזן',
@@ -83,6 +93,7 @@ const TRANSLATIONS = {
     'nav.armory': 'The Armory',
     'nav.fleshmancer': 'The Fleshmancer',
     'nav.ritual': 'The Ritual',
+    'nav.faq': 'The Inquisition',
     'nav.gallery': 'The Gallery',
     'nav.ledger': 'The Ledger',
 
@@ -120,6 +131,15 @@ const TRANSLATIONS = {
     'ritual.item5.body': 'On your back, away from the wound. A travel pillow becomes your shield against nocturnal irritation.',
     'ritual.item6.title': 'Patience is the Final Trial:',
     'ritual.item6.body': 'Full healing takes months, sometimes a year. Do not downsize, change, or remove jewelry before clearing it with your practitioner. The flesh remembers impatience.',
+
+    'faq.title': 'The Inquisition',
+    'faq.subtitle': 'Answers to frequent inquiries',
+    'faq.q1': 'What materials do you use for jewelry?',
+    'faq.a1': 'I work exclusively with implant-grade titanium (ASTM-F136) and solid gold (14k/18k). No inferior metals shall pass these gates. Your body requires materials that will not betray it.',
+    'faq.q2': 'Can I bring my own jewelry for a fresh piercing?',
+    'faq.a2': 'No. I cannot vouch for the sterility or alloy quality of outside jewelry. Every ritual begins with a pure, new relic straight from my armory.',
+    'faq.q3': 'How do you handle pain management?',
+    'faq.a3': 'The pain is fleeting, the adornment is eternal. I work with swift, focused precision, but I do not use numbing creams—they alter the tissue texture and compromise anatomical accuracy. Breathe deep, and embrace the alteration.',
 
     'gallery.title': 'The Gallery',
     'gallery.subtitle': 'A testament to the work. Each image a finished ritual.',
