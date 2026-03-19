@@ -6,6 +6,14 @@
 /* --- Google Fonts --- */
 @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Pirata+One&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Cinzel:wght@400;600;700&display=swap');
 
+/* --- Local Fonts --- */
+@font-face {
+  font-family: 'ShmulikCLM';
+  src: url('ShmulikCLM.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* --- CSS Custom Properties --- */
 :root {
   /* True shining silver — never reaches white, stays in steel range */
@@ -152,10 +160,28 @@ a:hover {
 }
 
 .nav-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  line-height: 1.1;
+}
+
+.nav-logo .brand-en {
   font-family: var(--font-gothic);
   font-size: 1.6rem;
   color: var(--accent-gold);
-  text-decoration: none;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.nav-logo .brand-he {
+  font-family: 'ShmulikCLM', serif;
+  font-size: 1rem;
+  color: var(--accent-gold);
+  letter-spacing: 0;
+  font-weight: 400;
+  line-height: 1.1;
 }
 
 .nav-links {
@@ -246,14 +272,24 @@ body.lang-he textarea,
 body.lang-he .card-subtitle,
 body.lang-he .ritual-subtitle,
 body.lang-he .gallery-subtitle {
-  font-family: 'Heebo', sans-serif;
+  font-family: 'Tinos', serif;
+  font-weight: 700;
   font-size: 1rem;
   line-height: 1.9;
 }
 
 body.lang-he h2,
-body.lang-he h3 {
+body.lang-he h3,
+body.lang-he .signature {
+  font-family: 'ShmulikCLM', 'Tinos', serif;
   letter-spacing: 0;
+}
+
+body.lang-he .nav-links a {
+  font-family: 'Tinos', serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
 }
 
 /* ============================================================
@@ -352,6 +388,26 @@ body.lang-he h3 {
   text-shadow: 0 0 40px rgba(184, 150, 61, 0.3),
                2px 2px 0px var(--accent-purple);
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.1;
+}
+
+.hero-content h1 .brand-en {
+  font-family: var(--font-gothic);
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.hero-content h1 .brand-he {
+  font-family: 'ShmulikCLM', serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  letter-spacing: 0;
+  margin-top: 0.2rem;
+  font-weight: 400;
+  line-height: 1.1;
 }
 
 .hero-subtitle {
