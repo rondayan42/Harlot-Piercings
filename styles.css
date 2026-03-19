@@ -1143,6 +1143,16 @@ body.lang-en .faq-question { text-align: left; }
     display: flex;
   }
 
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
   .about-layout {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -1169,14 +1179,37 @@ body.lang-en .faq-question { text-align: left; }
     padding: 3rem 1.2rem;
   }
 
-  .divider-sword svg {
-    width: 60vw;
+  .divider-img {
+    width: 80vw;
+  }
+
+  .grimoire-card, .about-text {
+    padding: 2rem 1.5rem;
+  }
+
+  .faq-question {
+    padding: 1.2rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .faq-answer-inner {
+    padding: 0 1rem;
+  }
+
+  .faq-item.active .faq-answer-inner {
+    padding-bottom: 1.2rem;
+  }
+
+  .lightbox-close {
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .hero-content h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 
   .hero-subtitle {
@@ -1186,5 +1219,11 @@ body.lang-en .faq-question { text-align: left; }
 
   .social-links {
     flex-wrap: wrap;
+  }
+
+  .btn-cta, .btn-submit {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
   }
 }
